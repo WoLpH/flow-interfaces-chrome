@@ -253,43 +253,43 @@ type chrome$tabs = {
     addListener(callback: (activeInfo: {
       tabId: number,
       windowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onActiveChanged: {
     ...chrome$Event,
-    addListener(callback: (tabId: number, selectInfo: {windowId: number}) => void): void
+    addListener(callback: (tabId: number, selectInfo: {windowId: number}) => Promise): void
   },
   onAttached: {
     ...chrome$Event,
     addListener(callback: (tabId: number, attachInfo: {
       newPosition: number,
       newWindowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onCreated: {
     ...chrome$Event,
-    addListener(callback: (tab: chrome$Tab) => void): void
+    addListener(callback: (tab: chrome$Tab) => Promise): void
   },
   onDetached: {
     ...chrome$Event,
     addListener(callback: (tabId: number, detachInfo: {
       oldPosition: number,
       oldWindowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onHighlightChanged: {
     ...chrome$Event,
     addListener(callback: (selectInfo: {
       tabIds: Array<number>,
       windowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onHighlighted: {
     ...chrome$Event,
     addListener(callback: (highlightInfo: {
       tabIds: Array<number>,
       windowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onMoved: {
     ...chrome$Event,
@@ -297,22 +297,22 @@ type chrome$tabs = {
       fromIndex: number,
       toIndex: number,
       windowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onRemoved: {
     ...chrome$Event,
     addListener(callback: (tabId: number, removeInfo: {
       isWindowClosing: boolean,
       windowId: number
-    }) => void): void
+    }) => Promise): void
   },
   onReplaced: {
     ...chrome$Event,
-    addListener(callback: (addedTabIds: number, removedTabId: number) => void): void
+    addListener(callback: (addedTabIds: number, removedTabId: number) => Promise): void
   },
   onSelectionChanged: {
     ...chrome$Event,
-    addListener(callback: (tabId: number, selectInfo: {windowId: number}) => void): void
+    addListener(callback: (tabId: number, selectInfo: {windowId: number}) => Promise): void
   },
   onUpdated: {
     ...chrome$Event,
@@ -320,7 +320,7 @@ type chrome$tabs = {
       tabId: number,
       changeInfo: chrome$TabChangeInfo,
       tab: chrome$Tab
-    ) => void): void
+    ) => Promise): void
   },
   onZoomChange: {
     ...chrome$Event,
@@ -329,6 +329,6 @@ type chrome$tabs = {
       oldZoomFactor: number,
       tabId: number,
       zoomSettings: chrome$ZoomSettings
-    }) => void): void
+    }) => Promise): void
   }
 };

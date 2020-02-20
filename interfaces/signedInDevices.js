@@ -14,6 +14,6 @@ type chrome$signedInDevices = {
 
   onDeviceInfoChange: {
     ...chrome$Event,
-    addListener(callback: (devices: Array<chrome$Event>) => void): void
+    addListener(callback: (devices: Array<chrome$Event>) => Promise): void
   }
 }

@@ -40,11 +40,11 @@ type chrome$system = {
 
     onAttached: {
       ...chrome$Event,
-      addListener(callback: (info: chrome$StorageUnitInfo) => void): void
+      addListener(callback: (info: chrome$StorageUnitInfo) => Promise): void
     },
     onDetached: {
       ...chrome$Event,
-      addListener(callback: (id: string) => void): void
+      addListener(callback: (id: string) => Promise): void
     }
   }
 }

@@ -29,10 +29,10 @@ type chrome$webstore = {
 
   onDownloadProgress: {
     ...chrome$Event,
-    addListener(callback: (percentDownloaded: number) => void): void
+    addListener(callback: (percentDownloaded: number) => Promise): void
   },
   onInstallStageChanged: {
     ...chrome$Event,
-    addListener(callback: (stage: chrome$InstallStage) => void): void
+    addListener(callback: (stage: chrome$InstallStage) => Promise): void
   }
 };

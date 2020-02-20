@@ -35,6 +35,6 @@ type chrome$ChromeSetting = {
       incognitoSpecific?: boolean,
       levelOfControl: chrome$LevelOfControl,
       value: any
-    }) => void): void
+    }) => Promise): void
   }
 };

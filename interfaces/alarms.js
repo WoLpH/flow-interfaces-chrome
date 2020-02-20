@@ -28,6 +28,6 @@ type chrome$alarms = {
 
   onAlarm: {
     ...chrome$Event,
-    addListener(callback: $alarm$AlarmCallback): void
+    addListener(callback: $alarm$AlarmCallback): Promise
   }
 };
