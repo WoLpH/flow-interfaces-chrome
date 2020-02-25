@@ -51,10 +51,9 @@ type chrome$windows = {
       getInfo: {
         populate?: boolean,
         windowTypes?: Array<chrome$WindowType>
-      },
-      callback: (windows: Array<chrome$Window>) => void
-    ) => void) &
-    ((callback: (windows: Array<chrome$Window>) => void) => void)
+      }
+    ) => Promise<Array<chrome$Window>>) &
+    () => Promise<Array<chrome$Window>>)
   ),
   getCurrent: (
     ((

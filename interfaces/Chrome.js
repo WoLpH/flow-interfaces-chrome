@@ -42,4 +42,5 @@ declare var chrome: {
   webRequest: chrome$webRequest,
   webstore: chrome$webstore,
   windows: chrome$windows,
+  proxy: chrome$proxy,
 };

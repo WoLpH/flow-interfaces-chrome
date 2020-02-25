@@ -34,7 +34,7 @@ type chrome$cookies = {
     session?: boolean,
     storeId?: string,
     url?: string
-  }, callback: (cookies: Array<chrome$Cookie>) => void): void,
+  }) => Promise<Array<chrome$Cookie>>,
   getAllCookieStores(callback: (cookieStores: Array<chrome$CookieStore>) => void): void,
   remove(details: {
     name: string,

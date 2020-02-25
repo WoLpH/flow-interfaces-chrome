@@ -69,17 +69,15 @@ type chrome$tabs = {
         format?: 'jpeg' | 'png',
         quanlity?: number
       },
-      callback: (dataUrl: string) => void
-    ) => void) &
-    ((windowId: number, callback: (dataUrl: string) => void) => void) &
+    ) => Promise) &
+    ((windowId: number) => Promise) &
     ((
       options: {
         format?: 'jpeg' | 'png',
         quanlity?: number
       },
-      callback: (dataUrl: string) => void
-    ) => void) &
-    ((callback: (dataUrl: string) => void) => void)
+    ) => Promise) &
+    (() => Promise)
   ),
   connect(tabId: number, connectInfo?: {
     frameId?: number,
@@ -93,12 +91,11 @@ type chrome$tabs = {
     selected?: boolean,
     url?: string,
     windowId?: number
-  }, callback?: (tab: chrome$Tab) => void): void,
+  }): Promise,
   detectLanguage: (
-    ((tabId: number, callback: (language: string) => void) => void) &
-    ((callback: (language: string) => void) => void)
-  ),
-  duplicate(tabId: number, callback?: (tab?: chrome$Tab) => void): void,
+    ((tabId: number, ) => Promise<string>) &
+  ): Promise,
+  duplicate(tabId: number, callback?: (tab?: chrome$Tab) => void): Promise,
   executeScript: (
     ((
       tabId?: number,
@@ -110,8 +107,7 @@ type chrome$tabs = {
         matchAboutBlank?: boolean,
         runAt?: chrome$RunAt
       },
-      callback?: (result?: Array<any>) => void
-    ) => void) &
+    ) => Promise) &
     ((
       details: {
         allFrames?: boolean,
@@ -121,15 +117,14 @@ type chrome$tabs = {
         matchAboutBlank?: boolean,
         runAt?: chrome$RunAt
       },
-      callback?: (result?: Array<any>) => void
-    ) => void)
+    ) => Promise)
   ),
-  get(tabId: number, callback: (tab: chrome$Tab) => void): void,
+  get(tabId: number, callback: (tab: chrome$Tab) => void): Promise,
   getAllInWindow: (
     ((windowId: number, callback: (tabs: Array<chrome$Tab>) => void) => void) &
     ((callback: (tabs: Array<chrome$Tab>) => void) => void)
   ),
-  getCurrent(callback: (tab?: chrome$Tab) => void): void,
+  getCurrent(callback: (tab?: chrome$Tab) => void): Promise,
   getSelected: (
     ((windowId: number, callback: (tab: chrome$Tab) => void) => void) &
     ((callback: (tab: chrome$Tab) => void) => void)
@@ -152,7 +147,7 @@ type chrome$tabs = {
   highlight(highlightInfo: {
     tabs: number | Array<number>,
     windowId?: number
-  }, callback?: (window: chrome$Window) => void): void,
+  }, callback?: (window: chrome$Window) => void): Promise,
     insertCSS: (
       ((
         tabId: number,
@@ -185,7 +180,7 @@ type chrome$tabs = {
       windowId?: number
     },
     callback?: (tabs: chrome$Tab | Array<chrome$Tab>) => void
-  ): void,
+  ): Promise,
   query(queryInfo: {
     active?: boolean,
     audible?: boolean,
@@ -200,20 +195,18 @@ type chrome$tabs = {
     url?: string | Array<string>,
     windowId?: number,
     windowType?: chrome$WindowType
-  }, callback: (result: Array<chrome$Tab>) => void): void,
+  }): Promise,
   reload(
     tabId?: number,
     reloadProperties?: {bypassCache?: boolean},
-    callback?: () => void
-  ): void,
-  remove(tabIds: number | Array<number>, callback?: () => void): void,
+  ): Promise,
+  remove(tabIds: number | Array<number>, callback?: () => void): Promise,
   sendMessage(
     tabId: number,
     message: any,
     options?: {frameId?: number},
-    responseCallback?: (response: any) => void
-  ): void,
-  sendRequest(tabId: number, request: any, responseCallback?: (response: any) => void): void,
+  ): Promise,
+  sendRequest(tabId: number, request: any): Promise,
   setZoom: (
     ((
       tabId: number,
