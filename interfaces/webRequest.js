@@ -154,7 +154,7 @@ type chrome$webRequest = {
           statusLine: string,
           statusCode: number,
         },
-        asyncCallback?: chrome$BlockingResponse,
+        asyncCallback: (chrome$BlockingResponse) => void,
       ) => ?chrome$BlockingResponse,
       filter?: chrome$RequestFilter,
       extraInfoSpec?: Array<chrome$OnAuthRequiredOptions>,
